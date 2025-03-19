@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>RESULT</title>
+	<script>
+		window.onload = function() {
+			document.myform.cap.value = Math.floor(Math.random() * 10000) + 1000;
+		}
+
+		function checkcap()
+		{
+			
+			var x = Number(document.myform.cap.value);
+			var y = Number(document.myform.captcha.value);
+			console.log("Generated captcha: " + x); 
+			console.log("User input captcha: " + y); 
+
+			if (x != y) {
+				alert("Invalid captcha");
+			    event.preventDefault();
+			     document.myform.cap.value = Math.floor(Math.random() * 10000) + 1000;
+			     return false;
+				 }
+      document.myform.cap.value = Math.floor(Math.random() * 10000) + 1000;
+			
+		}
+	</script>
+</head>
+<body>
+	<br><br>
+	<h1 align="center">MGU RESULT PORTAL</h1>
+	<center>
+		<form method="post" action="result.php" name="myform" onsubmit="return checkcap(event);">
+			<input type="text" name="regno" placeholder="Register No" required>
+			<input type="text" name="captcha" placeholder="Captcha" required>
+			<input type="text" name="cap" value="" readonly>
+			<input type="submit" name="submit" value="Check">
+		</form>
+	</center>
+</body>
+</html>
+
